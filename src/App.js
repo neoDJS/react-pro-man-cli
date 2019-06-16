@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Routes from "./routes";
+import Header from "./header";
+// import logo from './logo.svg';
+import React, { Component } from 'react';
+// import { Navbar } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+import { connect } from 'react-redux'
+import { fetchProjects } from './actions/projectActions'
+// import { fetchTodos } from './actions/todoActions'
+import { fetchWorkers } from './actions/workerActions'
+import { fetchUsers } from './actions/userActions'
+
+class App extends Component {
+
+    componentDidMount() {
+        // fetch the cats
+        this.props.fetchProjects();
+        this.props.fetchWorkers();
+        this.props.fetchUsers();
+    }
+
+    render() {
+        return (
+            <div className = "App" >
+                <Header />
+                <Routes lists={this.props.lists} />
+            </div>
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {    lists: {
+                    projectsList: state.projects,
+                    workersList: state.workers,
+                    usersList: state.users
+                }
+            };
+}
+
+export default connect(mapStateToProps, { fetchProjects, fetchWorkers, fetchUsers })(App);
