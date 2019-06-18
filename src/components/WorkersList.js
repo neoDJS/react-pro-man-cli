@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const WorkersList = ({ workers }) => {
+const WorkersList = ({ workers=[] }) => {
   const renderWorkers = workers.map(worker =>
     <li><Link key={worker.id} to={`/workers/${worker.id}`}>{worker.name}</Link></li>
   );

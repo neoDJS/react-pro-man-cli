@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const TodosList = ({ todos }) => {
+const TodosList = ({ todos=[] }) => {
   const renderTodos = todos.map(todo =>
     <li><Link key={todo.id} to={`/todos/${todo.id}`}>{todo.task}</Link></li>
   );

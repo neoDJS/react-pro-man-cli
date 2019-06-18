@@ -19,9 +19,9 @@ export default class Home extends Component {
                                 Edit <code> src / App.js </code> and save to reload.  
                             </p>  
                             {/*<a className = "App-link"
-                                                        href = "https://reactjs.org"
-                                                        target = "_blank"
-                                                        rel = "noopener noreferrer" > Learn React </a>*/}
+                                href = "https://reactjs.org"
+                                target = "_blank"
+                                rel = "noopener noreferrer" > Learn React </a>*/}
                         </header >
                     </div>   
                 </div > 
@@ -29,3 +29,8 @@ export default class Home extends Component {
         );
     }
 }
+
+// Specifies the default values for props:
+// Home.defaultProps = {
+//   name: 'Stranger'
+// };
